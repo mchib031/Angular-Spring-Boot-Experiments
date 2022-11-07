@@ -1,0 +1,43 @@
+<table>
+  <tr>
+    <td>
+      <label for="value1"> Premier nombre: </label>
+    </td>
+    <td>
+      <input name="value1" id="value1" value="{{firstnum | number: '1.0-2'}}" #value1>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="value2"> Second nombre: </label>
+    </td>
+    <td>
+      <input name="value2" id="value2" value="{{secondnum | number: '1.0-2'}}" #value2>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="result"> Réponse: </label>
+    </td>
+    <td>
+      <input readonly name="result" id="result" value="{{ resultat }}" #result>
+    </td>
+  </tr>
+  <br>
+  <br>
+
+  <tr>
+    <td>
+      <button (click)="add(value1.value, value2.value)"> + </button>
+    </td>
+    <td>
+      <button (click)="subtract(value1.value, value2.value)"> - </button>
+    </td>
+    <td>
+      <button (click)="multiply(value1.value, value2.value)"> * </button>
+    </td>
+    <td>
+      <button (click)="divide(value1.value, value2.value)"> / </button>
+    </td>
+  </tr>
+</table>
