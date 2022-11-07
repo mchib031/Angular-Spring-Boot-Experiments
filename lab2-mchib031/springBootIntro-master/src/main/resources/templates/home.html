@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div>
+    <h1>Calculator</h1>
+    <div th:switch="${error}">
+        <p th:case="'secondFormatError'">
+            Wrong value must be a number
+        </p>
+        <p th:case="'firstFormatError'">
+            Wrong value must be a number
+        </p>
+        <p th:case="'OperationFormatError'">
+            Wrong operation
+        </p>
+    </div>
+    <form th:action="@{/calculate}" method="get">
+        <table>
+            <tr>
+                <td><label for="first">Premier Nombre:</label></td>
+                <td><input name="first"
+                           id="first"
+                           th:name="first" th:value="${first}"></td>
+            </tr>
+            <tr>
+                <td><label for="second">Second Nombre:</label></td>
+                <td><input name="second"
+                           id="second"
+                           th:name="second" th:value="${second}"></td>
+            </tr>
+            <tr>
+                <td><label for="result">Resultat:</label></td>
+                <td><input name="result"
+                           id="result"
+                           th:name="result" th:value="${result}"></td>
+            </tr>
+        </table>
+        <tr>
+            <button type="submit" th:name="operation" th:value="add">
+                +</button>
+            <button type="submit" th:name="operation" th:value="sub">
+                -</button>
+            <button type="submit" th:name="operation" th:value="multiply">
+                x</button>
+            <button type="submit" th:name="operation" th:value="divide">
+                /</button>
+        </tr>
+    </form>
+</div>
+</body>
+</html>
