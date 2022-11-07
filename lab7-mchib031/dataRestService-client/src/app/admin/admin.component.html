@@ -1,0 +1,67 @@
+<div class="container">
+  <div [ngStyle]="msgStyle" [hidden]="hideMsg">
+    {{message}}
+  </div>
+  <h1>Book Form</h1>
+  <button (click)="addAuthor()">Add Author</button>
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <input type="text" class="form-control" id="category"  formControlName="category">
+      <div [hidden]="category.pristine || category.valid"
+           class="alert alert-danger">
+        Category is required to be <b>Kids</b>, <b>Tech</b> or <b>Cook</b>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" required formControlName="title">
+      <div [hidden]="title.pristine || title.valid"
+           class="alert alert-danger">
+        Title is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cost">Cost:</label>
+      <input type="text" class="form-control" id="cost" required  pattern="\d+(.\d{1,2})?" formControlName="cost">
+      <div [hidden]="cost.pristine || cost.valid"
+           class="alert alert-danger">
+        Cost should be a number with two optional decimals
+      </div>
+    </div>
+    <div class="form-group">
+      <div formArrayName="authors">
+        <div *ngFor="let _ of authors.controls; let i=index">
+          <ng-container [formGroupName]="i">
+            <label>
+              Author First Name:
+              <input formControlName="firstName" type="text">
+            </label>
+            <label>
+              Author Last Name:
+              <input formControlName="lastName" type="text">
+            </label>
+            <button class="btn btn-dark" (click)="removeAuthor(i)">X</button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="year">Year:</label>
+      <input type="text" class="form-control" id="year" formControlName="year">
+      <div [hidden]="title.pristine || title.valid"
+           class="alert alert-danger">
+        Year is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea cols="40" class="form-control" id="description" formControlName="description"></textarea>
+      <div [hidden]="title.pristine || title.valid"
+           class="alert alert-danger">
+        Description is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid">Submit</button>
+  </form>
+</div>
