@@ -1,0 +1,73 @@
+<div class="contact-form">
+  <h2>Contact Form</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        formControlName="firstName"
+        placeholder="Your first name..."
+        class="form-control"
+      />
+      <small
+        class="error-msg"
+        *ngIf="contactForm.get('firstName').touched && contactForm.get('firstName').errors?.['required']"
+        >First name is a required field</small
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        formControlName="lastName"
+        placeholder="Your last name..."
+        class="form-control"
+      />
+
+      <small
+        class="error-msg"
+        *ngIf="contactForm.get('lastName').touched && contactForm.get('lastName').errors?.['required']"
+        >Last name is a required field</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        type="tel"
+        formControlName="phoneNumber"
+        placeholder="(xxx)-xxx-xxxx"
+        class="form-control"
+      />
+
+      <small
+        class="error-msg"
+        *ngIf="contactForm.get('phoneNumber').errors?.['pattern']"
+        >Phone number needs to be 10 digits and the first and forth digits can't
+        be 0</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        formControlName="email"
+        placeholder="Your email"
+        class="form-control"
+      />
+      <small
+        class="error-msg"
+        *ngIf="contactForm.get('email').errors?.['email']"
+        >Email has to be a valid standard email</small
+      >
+    </div>
+
+    <input
+      type="submit"
+      value="Submit"
+      class="btn btn-lg btn-outline-primary mt-3"
+      [disabled]="!contactForm.valid"
+    />
+  </form>
+</div>
