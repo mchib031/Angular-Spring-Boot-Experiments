@@ -1,0 +1,8 @@
+*{
+  padding: 10px;
+}
+.form-group{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}

@@ -1,0 +1,28 @@
+<div class="form-container">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            [routerLink]="['/contact-form']"
+            class="nav-link"
+            routerLinkActive="active"
+            >Add Contact</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            [routerLink]="['/contacts']"
+            class="nav-link"
+            routerLinkActive="active"
+            >Contact List</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+</div>

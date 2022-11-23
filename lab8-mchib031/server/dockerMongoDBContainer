@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+docker run -d -p 8081:27017 --name=mongoDB-lab8 \
+-v mongodblab8:/data/db \
+mongo
